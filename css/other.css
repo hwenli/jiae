@@ -1,0 +1,24 @@
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img, div { margin:0; padding:0;box-sizing: border-box;}
+fieldset, img { border:none; }
+address, caption, cite, code, dfn, th, var { font-style:normal; font-weight:normal; }
+ul, ol{ list-style:none; } 
+a{text-decoration: none;}
+*{box-sizing: border-box;}
+
+/*品牌*/
+.map{width: 100%;height: 554px;background: #dfe8e5;position: relative;}
+.map img{display: block;position: absolute;left: 50%;margin-left: -540px;}
+.titbox{width: 1080px;margin: 0 auto;}
+.titbox .col-md-12{padding: 0;}
+.titbox .col-md-12 p{width: 100%;height: 67px;line-height: 67px;font-size: 14px;color: rgb(74,74,74);}
+.containerbox{width: 1080px;height: 1080px;overflow: hidden;margin-bottom: 118px;}
+.ul02{width: 2430px;}
+.ul02 .li02{position: relative;float: left;}
+.ul02 .li02 img{width: 270px;height: 270px;}
+.ul02 .li02 .li02div{display: none;width: 270px;height: 270px;background: rgba(8,11,54,.4);position: absolute;left: 0;top: 0;cursor: pointer;}
+.ul02 .li02 .li02div h2{height: 100px;width: 100px;margin: 25px 85px 6px 85px;}
+.ul02 .li02 .li02div h2 img{width: 100px;height: 100px;}
+.ul02 .li02 .li02div .p1{color: rgb(255,255,255);display: block;text-align: center;margin-top: -25px;font-size: 18px;}
+.ul02 .li02 .li02div .p2{display: block;color: rgb(255,255,255);font-size: 10px;text-align: center;margin-top: -48px;}
+.ul02 .li02 .li02div .p3{line-height: 20px;margin-top: -25px;display: block;text-align: center;color: rgb(255,255,255);font-size: 13px;}
+.ul02 .li02:hover .li02div{display: block;}

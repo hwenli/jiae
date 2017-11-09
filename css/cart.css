@@ -1,0 +1,40 @@
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img, div { margin:0; padding:0;box-sizing: border-box;}
+fieldset, img { border:none; }
+address, caption, cite, code, dfn, th, var { font-style:normal; font-weight:normal; }
+ul, ol{ list-style:none; } 
+a{text-decoration: none;}
+*{box-sizing: border-box;}
+
+.cartbox{width: 1100px;margin-left: auto;margin-right: auto;}
+.cartbox .title{line-height: 60px;font-weight: 400;font-size: 20px;color: #333;padding-left: 15px;}
+.cartbox .carthead{height: 46px;padding: 0 20px;background: #fafafa;font-size: 14px;color: #666;}
+.cartbox .carthead li{float: left;line-height: 46px;text-align: center;}
+.cartbox .carthead .head1{width: 320px;}
+.cartbox .carthead .head2{width: 100px;}
+.cartbox .carthead .head3{width: 140px;padding: 0 20px;}
+.cartbox .carthead .head4{width: 160px;}
+.cartbox .carthead .head5{width: 100px;float: right!important;}
+.bigbig .sp_list{padding: 20px;border-bottom: 1px solid #f1f1f1;font-size: 14px;color: #333;height: 131px;}
+.bigbig .sp_list .cols{float: left;}
+.bigbig .sp_list .cols1{width: 320px;}
+.bigbig .sp_list .cols2{width: 100px;height: 90px;line-height: 90px;text-align: center;color: #666;}
+.bigbig .sp_list .cols3{width: 140px;height: 90px;padding: 0 20px;}
+.bigbig .sp_list .cols4{width: 160px;}
+.bigbig .sp_list .cols5{width: 150px;position: relative;margin-right: 30px;height: 90px;line-height: 90px;text-align: right;float: right!important;}
+.bigbig .pic,.name{display: block;float: left;}
+.bigbig .pic img{width: 90px;height: 90px;vertical-align: middle;}
+.bigbig .name{margin: 25px 0 0 10px;color: #666;max-width: 200px;}
+.bigbig .cols3 span{width: 20px;height: 20px;line-height: 20px;background: #ccc;text-align: center;font-size: 22px;color: #fff;cursor: pointer;float: left;margin: 35px 0 0;}
+.bigbig .cols3 input{float: left;width: 50px;text-align: center;height: 20px;border: 1px solid #ccc;margin: 35px 5px 0;color: #666;}
+.bigbig .cols5{position: relative;margin-right: 30px;width: 150px;height: 90px;line-height: 90px;text-align: right;}
+.bigbig .totle,.qian{font-size: 16px;color: #f5422a;}
+.bigbig .detele{position: absolute;line-height: 20px;top: 35px;right: -40px;color: #ccc;cursor: pointer;}
+.bigbig .detele:hover{color: #f5422a;}
+.totlebar{margin-top: 20px;line-height: 30px;height: 30px;}
+.fr{float: right;color: rgb(102,102,102);font-size: 14px;}
+.totleprice{font-size: 22px;color: #f542aa;font-weight: 700;}
+.btngroup{margin-top: 60px;height: 38px;margin-bottom: 20px;}
+.btngroup .btn1{float: right;margin-left: 10px;text-align: center;font-size: 14px;}
+.btngroup .btnred{width: 148px;height: 38px;line-height: 40px;background: #e74144;color: #fff;}
+.btngroup .btnwhite{width: 148px;height: 38px;line-height: 38px;border: 1px solid#ccc;color: #666;}
+

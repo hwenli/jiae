@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>加意新品</title>
+		<link rel="shortcut icon" href="http://www.jiae.com/static/images/common/favicon.ico">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/detail.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/cookie.js" ></script>
+	</head>
+	<body>
+		
+		<!--头部-->
+		<div class="header_top"></div>
+		<script>
+			$('.header_top').load('html/head.html')
+		</script>
+		
+		
+		<div class="header_mid"></div>
+		<script>
+			$('.header_mid').load('html/head_mid.html')
+		</script>
+		
+		<!--导航-->
+		<div class="navBar"></div>
+		<script>
+			$('.navBar').load('html/nav.html',function(){
+				var LIST=document.getElementsByClassName('Nav')
+				var LI=LIST[0].getElementsByTagName('li')
+				var show=document.getElementsByClassName('hoverNav')[0]
+				for (var i=1;i<LI.length-2;i++) {
+					LI[i].onmouseover=function(){
+						show.style.display='block'
+					}
+					show.onmouseover=function(){
+						show.style.display='block'
+					}
+					LI[i].onmouseout=function(){
+						show.style.display='none'
+					}
+					show.onmouseout=function(){
+						show.style.display='none'
+					}
+				}
+			})
+		</script>
+		
+		<!--隐藏导航-->
+		<div class="hoverNav"></div>
+		<script>
+			$('.hoverNav').load('html/navhide.html',function(){
+				$('.hiddennav').each(function(i) {
+					$('.hiddennav').eq(i).mouseover(function(){
+//						console.log($(".hiddennav").index(this))
+						$('.nav_wrap').eq($(".hiddennav").index(this)).addClass('show_nav').siblings().removeClass('show_nav')
+					})
+				});
+			})
+		</script>
+		
+		
+		
+		<div class="content">
+			<div class="crumb">
+				<a href="/">首页</a>
+				<span class="gt">></span>
+				<a href="##">分类</a>
+				<span class="gt">></span>
+				<span class="goodsname"></span>
+			</div>
+			
+			<div class="detailwrap">
+				<div class="detail">
+					<div class="left">
+						<div class="oh"></div>
+						
+						<div class="bottom">
+							<a class="wish" href="##">
+								<i></i>
+								<span>加入心愿单</span>
+							</a>
+							<span style="display: inline-block;width: 24px;height: 24px;margin-left: 40px;">
+								<img src="img/share.gif"/>
+							</span>
+							<div class="sharebox">
+								<a href="##" title="分享到新浪"><span class="shareicon sinaicon"></span></a>
+								<a href="##" title="分享到豆瓣"><span class="shareicon doubanicon"></span></a>
+								<a href="##" title="分享到人人网"><span class="shareicon renrenicon"></span></a>
+								<a href="##" title="分享到QQ空间"><span class="shareicon qzoneicon"></span></a>
+								<a href="##" title="分享到微信"><span class="shareicon weixinicon"></span></a>
+							</div>
+						</div>
+					</div>
+					<script>
+						var urlid=window.location.search;
+//						console.log(urlid)
+						var id= urlid.replace(/[^0-9]/ig,"");
+//						console.log(id)
+						$.ajax({
+							type:"get",
+							url:"sp.json",
+							success:function(data){
+								id=id-1;
+								var str='';
+								str+='<div class="picbig">'
+								str+='<img src="'+data[id].img+'" class="bigpic"/></div>'
+								str+='<div class="picsmall">'
+								str+='<a class="smallpic active"><img src="'+data[id].img+'"/></a>'
+								str+='<a class="smallpic"><img src="'+data[id].img+'"/></a>'
+								str+='<a class="smallpic"><img src="'+data[id].img+'"/></a>'
+								str+='<a class="smallpic"><img src="'+data[id].img+'"/></a></div>'
+								$('.oh').html(str)
+								
+								$('.smallpic').each(function(i){
+									$('.smallpic').eq(i).mouseover(function(){
+										$('.bigpic').attr("src",data[id].img)
+										$('.smallpic').eq(i).addClass('active').siblings().removeClass('active')
+									})
+								})
+							}
+						});
+						
+						
+					</script>
+					
+					
+					
+					<div class="right">
+						<div style="position: absolute;right: 20px;">
+							<img src="img/erweima.jpg" width="100" height="100"/>
+							<p style="font-size: 12px;margin-top: -8px;">微信扫码 快速支付</p>
+						</div>
+						<h1 class="namegoods" style="font-size: 24px;color: #333;"></h1>
+						<dl class="jiage">
+							<dt>优惠价</dt>
+							<dd>
+								<span>
+									<span>￥</span><span class="price"></span>
+								</span>
+							</dd>
+						</dl>
+						<dl class="describle">
+							<dt style="display: none;">详情</dt>
+							<dd>
+								<div class="describlebox" style="height: 130px;">
+									<p>● 杯身容量大，重量轻，线条优美，便于携带</p>
+									<p>● 整体式杯身，有效防漏</p>
+									<p>● 杯体模型上小下大，形成龙卷风旋涡，运转稳定榨汁细腻</p>
+									<p>● 可以连续运转，不怕空转</p>
+									<p>● 可用电源、电脑、车载、充电宝等各可以种USB方式充电</p>
+									<p>● 可给手机、风扇等USB电子设备应急供电</p>
+								</div>
+							</dd>
+						</dl>
+						
+						<dl class="choosecolor">
+							<dt>颜色</dt>
+							<dd class="choosebtn active"><a href="##">蓝色</a></dd>
+							<dd class="choosebtn"><a href="##">绿色</a></dd>
+						</dl>
+						
+						<div class="addcart">
+							<div class="addnum">
+								<div class="leftdiv">数量</div>
+								<div class="rightdiv">
+									<p>
+										<span class="des btn">-</span>
+										<input class="num" type="text" value="1" />
+										<span class="ins btn">+</span>
+									</p>
+								</div>
+							</div>
+							<p class="buy"><a class="addbuy" href="##">加入购物车</a></p>
+						</div>
+						
+						<script>
+							$('.choosebtn').each(function(i){
+								$('.choosebtn').eq(i).click(function(){
+									$('.choosebtn').eq(i).addClass('active').siblings().removeClass('active')
+								})
+							})
+							$('.des').click(function(){
+								var number1=$('.num').val()
+								if (number1==1) {
+									number1==1
+								}else{
+									number1--;
+									$('.num').val(number1)
+								}
+							})
+							$('.ins').click(function(){
+								var number2=$('.num').val()
+								number2++
+								$('.num').val(number2)
+							})
+							
+//							获取商品信息
+							var urlid=window.location.search;
+	//						console.log(urlid)
+							var id= urlid.replace(/[^0-9]/ig,"");
+	//						console.log(id)
+							
+							$.ajax({
+							type:"get",
+							url:"sp.json",
+							success:function(data){
+//								id=id-1;
+								$('.goodsname').html(data[id].name)
+								$('.namegoods').html(data[id].name)
+								$('.price').html(data[id].price)
+								var str='';
+								var str1=''
+								str1+='<p>'+data[id].p1+'</p>'
+								str1+='<p>'+data[id].p2+'</p>'
+								str1+='<p>'+data[id].p3+'</p>'
+								str1+='<p>'+data[id].p4+'</p>'
+								str1+='<p>'+data[id].p5+'</p>'
+								str1+='<p>'+data[id].p6+'</p>'
+								$('.describlebox').html(str1)
+								
+								$('.addbuy').click(function(){
+//									setCookie('cookie',(id+1),'3')
+//									alert(1)
+									var sp={
+										spimg:data[id].img,
+										spname:data[id].name,
+										spprice:data[id].price
+									};
+									$.post('sp.php',sp,function(data){
+										if(data.status==1){
+											alert("加入购物车成功！")
+										}else{
+											alert('失败')
+											console.log(typeof data)
+										}
+									},'json')
+								})
+								}
+							});
+							
+							
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--footer-->
+		<div class="footer_wrap"></div>
+		<script>
+			$('.footer_wrap').load('html/foot.html')
+		</script>
+		
+		
+		<div class="footer"></div>
+		<script>
+			$('.footer').load('html/footer.html')
+		</script>
+		
+		
+	</body>
+</html>

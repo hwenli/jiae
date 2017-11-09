@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的购物车|加意新品 - 一种创意的生活方式</title>
+		<link rel="shortcut icon" href="http://www.jiae.com/static/images/common/favicon.ico">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/cart.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	</head>
+	<body>
+		
+		<!--头部-->
+		<div class="header_top"></div>
+		<script>
+			$('.header_top').load('html/head.html')
+		</script>
+		
+		<div class="header_mid header_midlogin">
+			<div class="loginPic">
+				<a href="/">
+					<span>加意新品</span>
+				</a>
+			</div>
+		</div>
+		
+		
+		
+		<div class="cartbox">
+			<div class="carttit">
+				<h2 class="title">我的购物车</h2>
+			</div>
+			<ul class="carthead">
+				<li class="head1">商品</li>
+				<li class="head2">单价</li>
+				<li class="head3">数量</li>
+				<li class="head4">优惠</li>
+				<li class="head5">小计</li>
+			</ul>
+			
+			<!--购物车商品-->
+			<ul class="bigbig"></ul>
+			
+			<div class="totlebar">
+				<span class="fr">总计(不含运费):<span class="totleprice">0</span></span>
+			</div>
+			
+			<div class="btngroup">
+				<a class="btn1 btnred" href="##">去结算</a>
+				<a class="btn1 btnwhite" href="index.html">继续购物</a>
+			</div>
+			
+			<script>
+				
+				$.getJSON('cart.php',function(data){
+					var str='';
+					$.each(data,function(i){
+						str+='<li class="sp_list">'
+						str+='<div class="cols cols1">'
+						str+='<a class="pic" href="##"><img src="'+data[i].spimg+'"/></a>'
+						str+='<a class="name" href="##">'+data[i].spname+'</a></div>'
+						str+='<div class="cols cols2">￥<span class="dj">'+data[i].spprice+'</span></div>'
+						str+='<div class="cols cols3">'
+						str+='<span class="des btn">-</span>'
+						str+='<input class="num" type="text" value="1"/>'
+						str+='<span class="ins btn">+</span>	</div>'
+						str+='<div class="cols cols4"></div>'
+						str+='<div class="cols cols5">'
+						str+='<span class="qian">￥</span>'
+						str+='<span class="totle">'+data[i].spprice+'</span>'
+						str+='<a class="detele">X</a></div></li>'
+						
+						$('.bigbig').html(str)
+						
+//						$('.des').on('click',function(){
+//							var number1=$(this).next().val();
+//							if (number1==1) {
+//									number1==1
+//								}else{
+//									number1--;
+//									$(this).next().val(number1)
+//									$('.totle').eq(i).html(data[i].spprice*number1)
+//								}
+//						})
+//						
+//						$('.ins').on('click',function(){
+//							var number2=$(this).prev().val();
+//							number2++
+//							$(this).prev().val(number2)
+//							console.log(data[$(this).index()].spprice)
+//							var numB = Number($('.dj').eq(i).html())
+//							console.log(numB)
+//							$('.totle').eq(i).html(numB*number2+'.00');
+//						})
+					})
+					$('.ins').each(function(i){
+						$(this).click(function(){
+							var number2=$('.num').eq(i).val();
+							number2++
+							$('.num').eq(i).val(number2);
+							var numB = Number($('.dj').eq(i).html())
+							$('.totle').eq(i).html(numB*number2+'.00');
+						})
+					})
+					$('.des').each(function(i){
+						$(this).click(function(){
+							var number1=$('.num').eq(i).val();
+							if(number1==1){
+								number1=1
+							}else{
+								number1--
+								$('.num').eq(i).val(number1);
+								var numA = Number($('.dj').eq(i).html())
+								$('.totle').eq(i).html(numA*number1+'.00');
+							}
+						})
+					})
+				})
+			</script>
+		</div>
+		
+		
+		
+		
+		
+		
+		<!--footer-->
+		<div class="footer_wrap"></div>
+		<script>
+			$('.footer_wrap').load('html/foot.html')
+		</script>
+		
+		
+		<div class="footer"></div>
+		<script>
+			$('.footer').load('html/footer.html')
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>加意新品 - 一种创意的生活方式</title>
+		<link rel="shortcut icon" href="http://www.jiae.com/static/images/common/favicon.ico">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	</head>
+	<body>
+		
+		<!--头部-->
+		<div class="header_top"></div>
+		<script>
+			$('.header_top').load('html/head.html')
+		</script>
+		
+		<div class="header_mid header_midlogin">
+			<div class="loginPic">
+				<a href="/">
+					<span>加意新品</span>
+				</a>
+			</div>
+		</div>
+		
+		
+		
+		<!--注册表-->
+		<div class="contentReg">
+			<div class="regBox">
+				<div class="form_name">
+					<h3>
+						<span>加意新品</span>
+						<span></span>
+						<span>欢迎注册</span>
+					</h3>
+				</div>
+				<form class="reg" action="">
+					<div class="form_rows">
+						<span>账号</span>
+						<input type="text" class="username" placeholder="邮箱/手机号码"/><span class="userInfo" style="float: right;"></span>
+					</div>
+					<div class="form_rows">
+						<span>设置密码</span>
+						<input type="password" class="password" placeholder="输入密码"/>
+					</div>
+					<div class="form_rows">
+						<span>确认密码</span>
+						<input type="password" class="passwd" placeholder="再次输入密码"/>
+					</div>
+					<div class="form_rows">
+						<span>验证码</span>
+						<input class="check" type="text" placeholder="验证码"/>
+						<a class="checkPic" href="##"><img src=""/></a>
+					</div>
+					<div class="autoLogin">
+						<label>
+							<input type="checkbox" name="" id="" value="" />
+							<span>我已阅读并同意</span>
+						</label>
+						<a class="agree" href="##">《加意用户注册协议》</a>
+					</div>
+					<div class="btn_gp">
+						<a class="btn_login" href="##">立即注册</a>
+						<a class="btn_reg" href="##">已有账号？登录</a>
+					</div>
+				</form>
+				<div class="parter">
+					<p class="tit">使用合作网站账号登录:</p>
+					<p class="choose">
+						<a class="btn_qq" href="##"></a>
+						<a class="btn_wx" href="##"></a>
+					</p>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			$('.username').on('blur',function(){
+				$.get("check.php",{username:$(this).val()},function(data){
+				if(data.status==0)
+					$('.userInfo').text('用户名已存在，请重新选择');
+				else
+					$('.userInfo').text('用户名可以使用');
+				},"json");
+			});
+			
+			$('.btn_login').click(function(){
+				var user={
+					username:$('.username').val(),
+					password:$('.password').val(),
+					passwd:$('.passwd').val()
+				};
+//				console.log(user.passwd,user.password)
+				if (user.password != user.passwd) {
+					alert("两次密码输入不一致 请重新输入")
+				}else{
+					$.post('register.php',user,function(data){
+						if(data.status==1){
+							alert("注册成功！")
+							location='login.html';
+						}
+						else
+							$('.').text('注册失败')
+					},'json');
+				}
+				
+			});
+		</script>
+		
+		
+
+		<!--footer-->
+		<div class="footer_wrap"></div>
+		<script>
+			$('.footer_wrap').load('html/foot.html')
+		</script>
+		
+		
+		<div class="footer"></div>
+		<script>
+			$('.footer').load('html/footer.html')
+		</script>
+		
+	</body>
+</html>
+

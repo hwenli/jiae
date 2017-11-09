@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>加意新品 - 一种创意的生活方式</title>
+		<link rel="shortcut icon" href="http://www.jiae.com/static/images/common/favicon.ico">
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/cookie.js" ></script>
+	</head>
+	<body>
+		
+		<!--头部-->
+		<div class="header_top"></div>
+		<script>
+			$('.header_top').load('html/head.html',function(){
+				if(getCookie('User')){
+					$('.changename').html(getCookie('User'))
+				}
+			})
+			
+			
+		</script>
+		
+		
+		<div class="header_mid"></div>
+		<script>
+			$('.header_mid').load('html/head_mid.html')
+		</script>
+		
+		<!--导航-->
+		<div class="navBar"></div>
+		<script>
+			$('.navBar').load('html/nav.html',function(){
+				var LIST=document.getElementsByClassName('Nav')
+				var LI=LIST[0].getElementsByTagName('li')
+				var show=document.getElementsByClassName('hoverNav')[0]
+				for (var i=1;i<LI.length-2;i++) {
+					LI[i].onmouseover=function(){
+						show.style.display='block'
+					}
+					show.onmouseover=function(){
+						show.style.display='block'
+					}
+					LI[i].onmouseout=function(){
+						show.style.display='none'
+					}
+					show.onmouseout=function(){
+						show.style.display='none'
+					}
+				}
+			})
+		</script>
+		
+		<!--隐藏导航-->
+		<div class="hoverNav"></div>
+		<script>
+			$('.hoverNav').load('html/navhide.html',function(){
+				$('.hiddennav').each(function(i) {
+					$('.hiddennav').eq(i).mouseover(function(){
+//						console.log($(".hiddennav").index(this))
+						$('.nav_wrap').eq($(".hiddennav").index(this)).addClass('show_nav').siblings().removeClass('show_nav')
+					})
+				});
+			})
+		</script>
+		
+		
+		
+		<!--轮播-->
+		<div class="banner">
+			<div class="carousel-inner">
+				<div class="item active" style="background: url(img/banner1.jpg)-328px 0 no-repeat;">
+					<a href="##"><img src="img/banner1.jpg" style="width: 1920px;height: 420px;opacity: 0;"/></a>
+				</div>
+				<div class="item" style="background: url(img/banner2.jpg)-328px 0 no-repeat;">
+					<a href="##"><img src="img/banner2.jpg" style="width: 1920px;height: 420px;opacity: 0;"/></a>
+				</div>
+				<div class="item" style="background: url(img/banner3.jpg)-328px 0 no-repeat;">
+					<a href="##"><img src="img/banner3.jpg" style="width: 1920px;height: 420px;opacity: 0;"/></a>
+				</div>
+				<div class="item" style="background: url(img/banner4.jpg)-328px 0 no-repeat;">
+					<a href="##"><img src="img/banner3.jpg" style="width: 1920px;height: 420px;opacity: 0;"/></a>
+				</div>
+				<div class="item" style="background: url(img/banner5.jpg)-328px 0 no-repeat;">
+					<a href="##"><img src="img/banner3.jpg" style="width: 1920px;height: 420px;opacity: 0;"/></a>
+				</div>
+				<div class="item" style="background: url(img/banner6.jpg)-328px 0 no-repeat;">
+					<a href="##"><img src="img/banner3.jpg" style="width: 1920px;height: 420px;opacity: 0;"/></a>
+				</div>
+			</div>
+			
+			
+			<div class="banner_footer">
+				<ul>
+					<li class="active hv"><img src="img/banner1.jpg"/><div class="item_cover"></div></li>
+					<li class="hv"><img src="img/banner2.jpg"/><div class="item_cover"></div></li>
+					<li class="hv"><img src="img/banner3.jpg"/><div class="item_cover"></div></li>
+					<li class="hv"><img src="img/banner4.jpg"/><div class="item_cover"></div></li>
+					<li class="hv"><img src="img/banner5.jpg"/><div class="item_cover"></div></li>
+					<li class="hv"><img src="img/banner6.jpg"/><div class="item_cover"></div></li>
+				</ul>
+			</div>
+			<script>
+				var showbox=document.querySelectorAll(".item")
+				var now=0;
+				var timer=null;
+//				自动播放
+				autoPlay()
+				function autoPlay(){
+					timer=setInterval(function(){
+						now++;
+						if (now==showbox.length) {
+							now=0;
+						}
+						Play()
+					},2500)
+				}
+				function Play(){
+						$('.item').eq(now).addClass("active").siblings().removeClass("active")
+						$('.hv').eq(now).addClass("active").siblings().removeClass("active")
+				}
+				
+				$('.hv').mouseover(function(){
+					clearInterval(timer)
+					now=$(this).index()
+					Play()
+				}).mouseout(function(){
+					autoPlay()
+				})
+			</script>
+		</div>
+		
+		
+		<!--main-->
+		<div class="fa">
+			<div class="content">
+				<!--标题部分-->
+				<div class="catalog_title">
+					<div class="catalog_left">
+						<span class="catalog_name">看大牌</span>
+						<span class="catalog_describle">用品质，打造VIP</span>
+					</div>
+					<div class="catalog_right">
+						<ul>
+							<li><a href="##"><img src="img/more.jpg"/><span>更多品牌</span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="item_list_1">
+					<div class="item_inner">
+						<ul>
+							<li class="hv"><a href="##"><img src="img/part1_1.jpg"/><div><p>Bathfeeling浴见</p><p>中国</p></div></a></li>
+							<li class="hv"><a href="##"><img src="img/part1_2.jpg"/><div><p>Travel  Blue</p><p>英国</p></div></a></li>
+							<li class="hv"><a href="##"><img src="img/part1_3.jpg"/><div><p>唤醒者</p><p>中国-美国</p></div></a></li>
+							<li class="hv"><a href="##"><img src="img/part1_4.jpg"/><div><p>IMM Living</p><p>加拿大</p></div></a></li>
+						</ul>
+					</div>
+				</div>
+				
+				
+				<div class="catalog_title">
+					<div class="catalog_left">
+						<span class="catalog_name">新品</span>
+						<span class="catalog_describle">以心，推新，总想给你最好的</span>
+					</div>
+					<div class="catalog_right">
+						<ul>
+							<li><a href="##"><img src="img/more.jpg"/><span>更多新品</span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="item_list_2">
+					<div class="item_inner">
+						<ul>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+						</ul>
+					</div>
+				</div>
+				
+				<!--家居-->
+				<div class="catalog_title">
+					<div class="catalog_left">
+						<span class="catalog_name">家居</span>
+						<span class="catalog_describle">精挑细选，只为生活更舒适</span>
+					</div>
+					<div class="catalog_right">
+						<ul>
+							<li class="partS"><a href="##"><img src="img/part3_1.png"/><span>贴心设计</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/part3_2.png"/><span>杂物收纳</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/part3_3.png"/><span>竹语伞</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/part3_4.png"/><span>器具日用</span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="item_list_2 item_list_3">
+					<div class="item_inner">
+						<ul>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+						</ul>
+					</div>
+				</div>
+				
+				<!--more-->
+				<div class="more">
+					<a href="##">更多家居好物<i></i></a>
+				</div>
+				
+				<!--厨房-->
+				<div class="catalog_title">
+					<div class="catalog_left">
+						<span class="catalog_name">厨房</span>
+						<span class="catalog_describle">家的味道，爱的味道</span>
+					</div>
+					<div class="catalog_right">
+						<ul>
+							<li class="partS"><a href="##"><img src="img/cf1.png"/><span>餐具</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/cf2.png"/><span>刀具</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/cf3.png"/><span>厨房小帮手</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/cf4.png"/><span>防潮保鲜</span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="item_list_2 item_list_3 item_list_4">
+					<div class="item_inner">
+						<ul>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+						</ul>
+					</div>
+				</div>
+				<!--more-->
+				<div class="more">
+					<a href="##">更多厨房好物<i></i></a>
+				</div>
+				
+				<!--数码-->
+				<div class="catalog_title">
+					<div class="catalog_left">
+						<span class="catalog_name">数码</span>
+						<span class="catalog_describle">用科技改变生活</span>
+					</div>
+					<div class="catalog_right">
+						<ul>
+							<li class="partS"><a href="##"><img src="img/sm1.png"/><span>智能生活</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/sm2.png"/><span>手机搭档</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/sm3.png"/><span>电脑周边</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/sm4.png"/><span>屏幕清洁</span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="item_list_2 item_list_3 item_list_4">
+					<div class="item_inner">
+						<ul>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+						</ul>
+					</div>
+				</div>
+				<!--more-->
+				<div class="more">
+					<a href="##">更多厨房好物<i></i></a>
+				</div>
+				
+				
+				<!--酒具-->
+				<div class="catalog_title">
+					<div class="catalog_left">
+						<span class="catalog_name">酒具</span>
+						<span class="catalog_describle">醇醪佳酿，岂可无美器作陪</span>
+					</div>
+					<div class="catalog_right">
+						<ul>
+							<li class="partS"><a href="##"><img src="img/mj1.png"/><span>红酒</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/mj2.png"/><span>瓶塞</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/mj3.png"/><span>酒架</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/mj4.png"/><span>杯贴</span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="item_list_2 item_list_3 item_list_4">
+					<div class="item_inner">
+						<ul>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+						</ul>
+					</div>
+				</div>
+				<!--more-->
+				<div class="more">
+					<a href="##">更多厨房好物<i></i></a>
+				</div>
+				
+				
+				<!--电器-->
+				<div class="catalog_title">
+					<div class="catalog_left">
+						<span class="catalog_name">电器</span>
+						<span class="catalog_describle">让生活更便利一些</span>
+					</div>
+					<div class="catalog_right">
+						<ul>
+							<li class="partS"><a href="##"><img src="img/sh1.png"/><span>空气净化</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/sh2.png"/><span>LED灯</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/sh3.png"/><span>台灯</span><i>/</i></a></li>
+							<li class="partS"><a href="##"><img src="img/sh4.png"/><span>小家电</span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="item_list_2 item_list_3 item_list_4">
+					<div class="item_inner">
+						<ul>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+						</ul>
+					</div>
+				</div>
+				<!--more-->
+				<div class="more">
+					<a href="##">更多厨房好物<i></i></a>
+				</div>
+				
+				<!--感兴趣-->
+				<div class="catalog_title">
+					<div class="catalog_left">
+						<span class="catalog_name">大家感兴趣的产品</span>
+					</div>
+					<div class="catalog_right"></div>
+				</div>
+				<div class="item_list_2">
+					<div class="item_inner">
+						<ul>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+							<li class="sp"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		
+		<script>
+			$.ajax({
+				type:"get",
+				url:"sp.json",
+				success:function(data){
+					$.each(data, function(i) {
+						var str='';
+						str+='<a href="detail.html?id='+data[i].id+'">'
+						str+='<img src="'+data[i].img+'"/></a>'
+						str+='<div class="add">'
+						str+='<h3><a class="piccont" href="detail.html?id='+data[i].id+'">'+data[i].name+'</a></h3>'
+						str+='<p>'+data[i].country+'</p></div>'
+						str+='<p class="price">￥'+data[i].price+'<span class="carticon"></span></p>'
+						$('.sp').eq(i).html(str)
+					});
+				}
+			});
+		</script>
+		
+		
+		<!--footer-->
+		<div class="footer_wrap"></div>
+		<script>
+			$('.footer_wrap').load('html/foot.html')
+		</script>
+		
+		
+		<div class="footer"></div>
+		<script>
+			$('.footer').load('html/footer.html')
+		</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>品牌列表</title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/other.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+	</head>
+	<body>
+		
+		<!--头部-->
+		<div class="header_top"></div>
+		<script>
+			$('.header_top').load('html/head.html')
+		</script>
+		
+		
+		<div class="header_mid"></div>
+		<script>
+			$('.header_mid').load('html/head_mid.html')
+		</script>
+		
+		<!--导航-->
+		<div class="navBar"></div>
+		<script>
+			$('.navBar').load('html/nav.html',function(){
+				var LIST=document.getElementsByClassName('Nav')
+				var LI=LIST[0].getElementsByTagName('li')
+				var show=document.getElementsByClassName('hoverNav')[0]
+				for (var i=1;i<LI.length-2;i++) {
+					LI[i].onmouseover=function(){
+						show.style.display='block'
+					}
+					show.onmouseover=function(){
+						show.style.display='block'
+					}
+					LI[i].onmouseout=function(){
+						show.style.display='none'
+					}
+					show.onmouseout=function(){
+						show.style.display='none'
+					}
+				}
+			})
+		</script>
+		
+		<!--隐藏导航-->
+		<div class="hoverNav"></div>
+		<script>
+			$('.hoverNav').load('html/navhide.html',function(){
+				$('.hiddennav').each(function(i) {
+					$('.hiddennav').eq(i).mouseover(function(){
+//						console.log($(".hiddennav").index(this))
+						$('.nav_wrap').eq($(".hiddennav").index(this)).addClass('show_nav').siblings().removeClass('show_nav')
+					})
+				});
+			})
+		</script>
+		
+		
+		<div class="map">
+			<img src="img/map.jpg"/>
+		</div>
+		
+		<div class="container">
+			<div class="titbox">
+				<div class="col-md-12">
+					<p>品牌列表页</p>
+				</div>
+			</div>
+			
+			<div class="titbox">
+				<div class="col-md-12">
+					<div class="containerbox">
+						<div style="width: 100%;position: relative;">
+							<ul class="ul02"></ul>
+							
+							<script>
+								$.getJSON("brand.json",function(data){
+									var BrandList=[];
+									for (var i=0;i<data.length;i++) {
+										var arr=new brand(data[i].img1,data[i].img2,data[i].p1,data[i].p2,data[i].p3);
+										BrandList.push(arr)
+										$('.ul02').append('<li class="li02">')
+									}
+									$('.li02').append('<a class="a1">')
+									$('.a1').append('<img class="imgfirst">')
+									$('.li02').append('<a class="a2">')
+									$('.a2').append('<div class="li02div">')
+									$('.li02div').append('<h2 class="shit">')
+									$('.shit').append('<img class="imgsecend">')
+									$('.li02div').append('<p class="p1">')
+									$('.li02div').append('<p class="p2">')
+									$('.li02div').append('<p class="p3">')
+									for (var i=0;i<=BrandList.length;i++) {
+										$('.imgfirst').eq(i).attr('src',BrandList[i].img1)
+										$('.imgsecend').eq(i).attr('src',BrandList[i].img2)
+										$('.p1').eq(i).html(BrandList[i].p1)
+										$('.p2').eq(i).html(BrandList[i].p2)
+										$('.p3').eq(i).html(BrandList[i].p3)
+									}
+								})
+								function brand(img1,img2,p1,p2,p3){
+									this.img1=img1;
+									this.img2=img2;
+									this.p1=p1;
+									this.p2=p2;
+									this.p3=p3;
+								}
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--footer-->
+		<div class="footer_wrap"></div>
+		<script>
+			$('.footer_wrap').load('html/foot.html')
+		</script>
+		
+		
+		<div class="footer"></div>
+		<script>
+			$('.footer').load('html/footer.html')
+		</script>
+		
+		
+	</body>
+</html>
